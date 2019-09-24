@@ -1,0 +1,12 @@
+{
+  "name": "mc-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "zip -r mc-api.zip . && aws lambda update-function-code --function-name mc-api --zip-file fileb://mc-api.zip && rm mc-api.zip"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.534.0"
+  }
+}

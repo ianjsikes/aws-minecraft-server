@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+  minecraft-server:
+    ports:
+      - '25565:25565'
+    environment:
+      EULA: 'true'
+      VERSION: '1.12.2'
+      TYPE: CURSEFORGE
+      CF_SERVER_MOD: 'https://www.curseforge.com/minecraft/modpacks/roguelike-adventures-and-dungeons/download/2782933'
+      SERVER_NAME: "Ian's R.A.D. Server"
+      DIFFICULTY: 'normal'
+      # OPS: 'ianistheking95'
+      # ICON: ''
+      MAX_PLAYERS: 10
+      SNOOPER_ENABLED: 'false'
+      SPAWN_PROTECTION: 'true'
+      MOTD: Welcome to Ian's R.A.D. Server!
+      ALLOW_FLIGHT: 'true'
+      ENABLE_QUERY: 'true'
+    volumes:
+      - /home/ubuntu/mc-data:/data
+    image: itzg/minecraft-server
+    container_name: mc
+    tty: true
+    stdin_open: true
+    restart: always
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: us-west-1
+        awslogs-group: mc-server
+        awslogs-stream: ftb-direwolf20
+        awslogs-datetime-format: '\[%H:%M:%S\]'
+  # rcon:
+  #   image: itzg/rcon
+  #   ports:
+  #     - "4326:4326"
+  #     - "4327:4327"
+  #   volumes:
+  #     - /home/ubuntu/rcon:/opt/rcon-web-admin/db
+# sudo docker run -d \
+#   -p 25565:25565 \
+#   --name mc \
+#   --restart always \
+#   -v ~/mc-data:/data \
+#   -e EULA=TRUE \
+#   -e VERSION="1.12.2" \
+#   -e TYPE="FTB" \
+#   -e FTB_SERVER_MOD="https://www.feed-the-beast.com/projects/ftb-presents-direwolf20-1-12/files/2690320" \
+#   -e SERVER_NAME="Ian's Modded Server" \
+#   -e DIFFICULTY="normal" \
+#   -e OPS="ianistheking95" \
+#   -e MAX_PLAYERS=10 \
+#   -e SNOOPER_ENABLED=FALSE \
+#   -e SPAWN_PROTECTION=TRUE \
+#   -e MOTD="Welcome to Ian's FTB Server!" \
+#   -e ALLOW_FLIGHT=TRUE \
+#   itzg/minecraft-server
