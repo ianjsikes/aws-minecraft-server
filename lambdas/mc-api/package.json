@@ -7,6 +7,6 @@
     "deploy": "zip -r mc-api.zip . && aws lambda update-function-code --function-name mc-api --zip-file fileb://mc-api.zip && rm mc-api.zip"
   },
   "dependencies": {
-    "aws-sdk": "^2.534.0"
+    "aws-sdk": "^2.814.0"
   }
 }
