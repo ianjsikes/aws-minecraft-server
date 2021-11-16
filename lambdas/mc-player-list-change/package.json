@@ -7,7 +7,7 @@
     "deploy": "zip -r mc-player-list-change.zip . && aws lambda update-function-code --function-name mc-player-list-change --zip-file fileb://mc-player-list-change.zip && rm mc-player-list-change.zip"
   },
   "dependencies": {
-    "aws-sdk": "^2.531.0",
+    "aws-sdk": "^2.814.0",
     "mcstatus": "^1.0.1"
   }
 }
